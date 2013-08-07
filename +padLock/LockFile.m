@@ -25,7 +25,7 @@ classdef LockFile < handle
     end
     
     
-    function delete(self)
+    function deleteLock(self)
       delete(self.filename);
       self.status = self.STATUSCODES(-1);
     end
