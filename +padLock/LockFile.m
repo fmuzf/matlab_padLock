@@ -9,7 +9,7 @@ classdef LockFile < handle
   end
   
   methods
-    function lf = LockFile(filename, statusCodes, defaultStatus)
+    function lf = LockFile(filename, statusCodes)
       % LockFile - Constructor for LockFile class
       % 
       % Args - filename : lockfile filename
@@ -19,7 +19,6 @@ classdef LockFile < handle
       lf.STATUSCODES = statusCodes;
      
       lf.filename = filename;
-      lf.defaultStatus = defaultStatus;
       lf.status = glazer.lockFile.getLockStatus(filename, lf.STATUSCODES);
       
     end
@@ -58,7 +57,6 @@ classdef LockFile < handle
       if ~(fid == -1)
         fprintf(fid, '%d', int32(self.STATUSCODES(status)));
         fclose(fid);
-        self.STATUSCODES(status)
         self.status = self.STATUSCODES(status);
         success = 1;
         return
