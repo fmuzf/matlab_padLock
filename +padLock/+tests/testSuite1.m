@@ -1,6 +1,4 @@
 function test_suite = testSuite1()
-%TESTLOCKCREATION Summary of this function goes here
-%   Detailed explanation goes here
 initTestSuite;
 end
 
@@ -56,3 +54,15 @@ gen = fileread(lockfilename);
 gold = fileread(goldfile);
 assertEqual(gen, gold);
 end
+
+
+function testUndefinedLockCode(lockfilename)
+% check that correct file is created
+goldpath = padLock.tests.getDataPath();
+goldfile = [goldpath '/locked.gold'];
+
+stats = @(x)padLock.tests.StatusCodes(x);
+lf = padLock.LockFile(lockfilename, stats);
+lf.setStatus(padLock.tests.StatusCodes.LOCKED);
+end
+
