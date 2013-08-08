@@ -4,7 +4,7 @@ end
 
 
 function goldpath = setup()
-goldpath = padLock.tests.getDataPath();
+goldpath = padlock.tests.getDataPath();
 end
 
 
@@ -14,17 +14,17 @@ end
 
 function testReadStatus(goldpath)
 goldfile = [goldpath '/locked.gold'];
-stats = @(x)padLock.tests.StatusCodes(x);
+stats = @(x)padlock.tests.StatusCodes(x);
 
-genStatus = padLock.getLockStatus(goldfile, stats);
-assertEqual(padLock.tests.StatusCodes.LOCKED, genStatus);
+genStatus = padlock.getLockStatus(goldfile, stats);
+assertEqual(padlock.tests.StatusCodes.LOCKED, genStatus);
 end
 
 
 function testReadBadStatus(goldpath)
 goldfile = [goldpath '/undefined.gold'];
-stats = @(x)padLock.tests.StatusCodes(x);
+stats = @(x)padlock.tests.StatusCodes(x);
 
-f = @()padLock.getLockStatus(goldfile, stats);
+f = @()padlock.getLockStatus(goldfile, stats);
 assertExceptionThrown(f,'MATLAB:class:InvalidEnum');
 end
