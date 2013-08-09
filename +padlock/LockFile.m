@@ -19,7 +19,7 @@ classdef LockFile < handle
       lf.STATUSCODES = statusCodes;
      
       lf.filename = filename;
-      lf.status = glazer.lockFile.getLockStatus(filename, lf.STATUSCODES);
+      lf.status = padlock.getLockStatus(filename, lf.STATUSCODES);
       
     end
     

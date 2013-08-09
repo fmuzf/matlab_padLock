@@ -1,7 +1,7 @@
 padlock
 ========
 
-v 0.0.3
+v 0.0.4
 
 A simple-minded lockfile class.
 
